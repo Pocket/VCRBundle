@@ -2,10 +2,9 @@
 
 namespace VCR\VCRBundle;
 
+use allejo\VCR\VCRCleaner;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-
-use VCR\VCRBundle\VCR\VCRFactory;
 
 class VCRVCRBundle extends Bundle
 {
@@ -24,6 +23,13 @@ class VCRVCRBundle extends Bundle
 
             $recorder->turnOn();
             $recorder->insertCassette($cassetteName);
+        }
+
+        if ($this->container->getParameter('vcr.sanitizer.enabled')) {
+            VCRCleaner::enable([
+                'request' => $this->container->getParameter('vcr.sanitizer.request'),
+                'response' => $this->container->getParameter('vcr.sanitizer.response'),
+            ]);
         }
     }
 }

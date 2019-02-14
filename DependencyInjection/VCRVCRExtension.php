@@ -27,6 +27,10 @@ class VCRVCRExtension extends Extension
         $container->setParameter('vcr.cassette.path', $config['cassette']['path']);
         $container->setParameter('vcr.cassette.type', $config['cassette']['type']);
         $container->setParameter('vcr.cassette.name', $config['cassette']['name']);
+
+        $container->setParameter('vcr.sanitizer.enabled', $config['sanitizer']['enabled']);
+        $container->setParameter('vcr.sanitizer.request', $config['sanitizer']['request']);
+        $container->setParameter('vcr.sanitizer.response', $config['sanitizer']['response']);
     }
 
     /**

@@ -58,6 +58,20 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('name')->defaultValue('vcr')->end()
                     ->end()
                 ->end()
+                ->arrayNode('sanitizer')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->booleanNode('enabled')->defaultValue(false)->end()
+                        ->arrayNode('request')
+                            ->addDefaultsIfNotSet()
+                            ->defaultValue([])
+                        ->end()
+                        ->arrayNode('response')
+                            ->addDefaultsIfNotSet()
+                            ->defaultValue([])
+                        ->end()
+                    ->end()
+                ->end()
             ->end();
 
         return $rootNode;
