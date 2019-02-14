@@ -28,7 +28,6 @@ class VCRVCRBundle extends Bundle
         if ($this->container->getParameter('vcr.sanitizer.enabled')) {
             VCRCleaner::enable([
                 'request' => $this->container->getParameter('vcr.sanitizer.request'),
-                'response' => $this->container->getParameter('vcr.sanitizer.response'),
             ]);
         }
     }
