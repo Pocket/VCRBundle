@@ -5,6 +5,7 @@ namespace VCR\VCRBundle;
 use allejo\VCR\VCRCleaner;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use VCR\Configuration;
 
 class VCRVCRBundle extends Bundle
 {
@@ -20,6 +21,14 @@ class VCRVCRBundle extends Bundle
         if ($this->container->getParameter('vcr.enabled')) {
             $recorder     = $this->container->get('vcr.recorder');
             $cassetteName = $this->container->getParameter('vcr.cassette.name');
+            /** @var Configuration $config */
+            $config = $this->container->get('vcr.config');
+
+            $config->setMode($this->container->getParameter('vcr.mode'));
+
+            if ($this->container->hasParameter('vcr.whitelist')) {
+                $config->setWhiteList($this->container->getParameter('whitelist'));
+            }
 
             $recorder->turnOn();
             $recorder->insertCassette($cassetteName);

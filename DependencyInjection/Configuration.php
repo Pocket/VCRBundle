@@ -30,6 +30,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->booleanNode('enabled')->defaultTrue()->end()
+                ->scalarNode('mode')->defaultValue('new_episodes')->end()
                 ->arrayNode('library_hooks')
                     ->addDefaultsIfNotSet()
                     ->children()
@@ -48,6 +49,10 @@ class Configuration implements ConfigurationInterface
                         ->booleanNode('headers')->defaultValue(true)->end()
                         ->booleanNode('body')->defaultValue(true)->end()
                         ->booleanNode('post_fields')->defaultValue(true)->end()
+                    ->end()
+                ->end()
+                ->arrayNode('whitelist')
+                    ->prototype('scalar')
                     ->end()
                 ->end()
                 ->arrayNode('cassette')

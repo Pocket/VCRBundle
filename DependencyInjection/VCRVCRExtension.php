@@ -35,6 +35,11 @@ class VCRVCRExtension extends Extension
         } else {
             $container->setParameter('vcr.sanitizer.request', []);
         }
+
+        if (isset($config['whitelist']) && is_array($config['whitelist'])) {
+            $container->setParameter('vcr.whitelist', $config['whitelist']);
+        }
+
     }
 
     /**
