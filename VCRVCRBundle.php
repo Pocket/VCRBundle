@@ -27,7 +27,7 @@ class VCRVCRBundle extends Bundle
             $config->setMode($this->container->getParameter('vcr.mode'));
 
             if ($this->container->hasParameter('vcr.whitelist')) {
-                $config->setWhiteList($this->container->getParameter('whitelist'));
+                $config->setWhiteList($this->container->getParameter('vcr.whitelist'));
             }
 
             $recorder->turnOn();
