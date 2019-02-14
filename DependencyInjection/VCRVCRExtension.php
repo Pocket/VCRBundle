@@ -30,16 +30,10 @@ class VCRVCRExtension extends Extension
 
         $container->setParameter('vcr.sanitizer.enabled', $config['sanitizer']['enabled']);
 
-        if (is_array($config['sanitizer']['request'])) {
+        if (isset($config['sanitizer']['request']) && is_array($config['sanitizer']['request'])) {
             $container->setParameter('vcr.sanitizer.request', $config['sanitizer']['request']);
         } else {
             $container->setParameter('vcr.sanitizer.request', []);
-        }
-
-        if (is_array($config['sanitizer']['response'])) {
-            $container->setParameter('vcr.sanitizer.response', $config['sanitizer']['response']);
-        } else {
-            $container->setParameter('vcr.sanitizer.response', []);
         }
     }
 
