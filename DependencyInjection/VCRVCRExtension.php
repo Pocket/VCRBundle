@@ -39,6 +39,8 @@ class VCRVCRExtension extends Extension
 
         if (isset($config['whitelist']) && is_array($config['whitelist'])) {
             $container->setParameter('vcr.whitelist', $config['whitelist']);
+        } else {
+            $container->setParameter('vcr.whitelist', []);
         }
 
     }

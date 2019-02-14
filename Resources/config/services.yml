@@ -15,6 +15,8 @@ services:
             - [ enableRequestMatchers, [ "%vcr.request_matchers%" ] ]
             - [ setCassettePath, [ "%vcr.cassette.path%" ] ]
             - [ setStorage, [ "%vcr.cassette.type%" ] ]
+            - [ setWhitelist, [ "%vcr.whitelist%" ] ]
+            - [ setMode, [ "%vcr.mode%" ] ]
 
     vcr.http_client:
         class: VCR\Util\HttpClient
